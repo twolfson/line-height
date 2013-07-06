@@ -27,6 +27,15 @@ function processNode() {
   });
 }
 
+function styleBody(css) {
+  before(function () {
+    body.style.cssText = css;
+  });
+  after(function () {
+    body.style.cssText = '';
+  });
+}
+
 // Basic tests
 describe('An unstyled div', function () {
   before(function () {
@@ -59,6 +68,7 @@ describe('A styled div', function () {
   });
 });
 
+// Intermediate tests
 describe('A percentage line-height div', function () {
   before(function () {
     this.html = '<div style="line-height: 150%;">abc</div>';
@@ -111,13 +121,10 @@ describe.skip('A numeric line-height div', function () {
 
 describe('An inherit line-height div', function () {
   before(function () {
-    body.style.cssText = 'line-height: 40px;';
     this.html = '<div style="line-height: inherit;">abc</div>';
   });
+  styleBody('line-height: 40px;');
   fixtureNode();
-  after(function () {
-    body.style.cssText = '';
-  });
 
   describe('processed by line-height', function () {
     processNode();
@@ -128,6 +135,27 @@ describe('An inherit line-height div', function () {
   });
 });
 
+// Advanced tests
+describe('A globally styled body and an unstyled div', function () {
+  before(function () {
+    lineHeight._ratio = null;
+    this.html = '<div>abc</div>';
+  });
+  styleBody('font-size: 40px;');
+  fixtureNode();
+
+  describe('processed by line-height', function () {
+    processNode();
+
+    it('has a line-height equal to its height', function () {
+      var height = this.node.offsetHeight;
+      assert.strictEqual(this.lineHeight, height);
+    });
+  });
+});
+
+
+// Kitchen sink tests
 describe('A pt line-height div', function () {
   before(function () {
     this.html = '<div style="line-height: 27pt;">abc</div>';
