@@ -2,6 +2,8 @@
 
 Calculate line-height of an HTML element (IE6 compatible)
 
+[![browser support](https://ci.testling.com/twolfson/line-height.png)](https://ci.testling.com/twolfson/line-height)
+
 ## Getting Started
 Install the module with: `npm install line-height`
 
