@@ -1,17 +1,18 @@
 // Load in test dependencies
 var lineHeight = require('../lib/line-height.js'),
     domify = require('domify');
-    assert = require('./utils/assert');
+    assert = require('./utils/assert'),
+    body = document.body;
 
 // Create common fixture actions
 function fixtureNode() {
   before(function () {
     var node = domify(this.html);
-    document.body.appendChild(node);
+    body.appendChild(node);
     this.node = node;
   });
   after(function () {
-    document.body.removeChild(this.node);
+    body.removeChild(this.node);
   });
 }
 
@@ -110,20 +111,22 @@ describe.skip('A numeric line-height div', function () {
 
 describe('An inherit line-height div', function () {
   before(function () {
+    body.style.cssText = 'line-height: 40px;';
     this.html = '<div style="line-height: inherit;">abc</div>';
   });
   fixtureNode();
+  after(function () {
+    body.style.cssText = '';
+  });
 
   describe('processed by line-height', function () {
     processNode();
 
-    it('has a line-height equal to its height', function () {
-      var height = this.node.offsetHeight;
-      assert.strictEqual(this.lineHeight, height);
+    it('has a line-height equal to the inherited amount', function () {
+      assert.strictEqual(this.lineHeight, 40);
     });
   });
 });
 
-// TODO: Actually use inherit
 // TODO: Test pt due ot IE
 // TODO: Test usage of pt in font-size for computation of ratios (IE troubles)
