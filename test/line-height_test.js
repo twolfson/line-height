@@ -1,77 +1,62 @@
 // Load in test dependencies
-var lineHeight = require('../lib/line-height.js');
+var lineHeight = require('../lib/line-height.js'),
+    assert = require('./utils/assert');
 
-// Create assertion methods (at the time of writing Chai does not work in <=IE8)
-function assertEqual(a, b) {
-  if (a !== b) {
-    throw new Error('Assertion error: ' + a + ' !== ' + b);
-  }
-}
-function assertNotEqual(a, b) {
-  if (a == b) {
-    throw new Error('Assertion error: ' + a + ' == ' + b);
-  }
-}
-
-// Basic tests
-describe('An unstyled div', function () {
+// Create common fixture actions
+function fixtureNode() {
   before(function () {
     var node = document.createElement('div');
-    node.innerHTML = 'abc';
-    document.body.appendChild(node);
-    this.node = node;
-  });
-  after(function () {
-    // document.body.removeChild(this.node);
-  });
-
-  describe('processed by line-height', function () {
-    before(function () {
-      this.lineHeight = lineHeight(this.node);
-    });
-
-    it('has a line-height which is a number', function () {
-      assertEqual(typeof this.lineHeight, 'number');
-      assertNotEqual(isNaN(this.lineHeight), true);
-    });
-
-    it('has a line-height equal to its height', function () {
-      var height = this.node.offsetHeight;
-      assertEqual(this.lineHeight, height);
-    });
-  });
-});
-
-describe('A styled div', function () {
-  before(function () {
-    var node = document.createElement('div');
-    node.innerHTML = 'abc';
-    node.style.cssText = 'line-height: 50px;';
+    node.innerHTML = this.input;
     document.body.appendChild(node);
     this.node = node;
   });
   after(function () {
     document.body.removeChild(this.node);
   });
+}
+
+function processNode() {
+  before(function () {
+    this.lineHeight = lineHeight(this.node);
+  });
+
+  it('has a line-height which is a number', function () {
+    assert.strictEqual(typeof this.lineHeight, 'number');
+    assert.notEqual(isNaN(this.lineHeight), true);
+  });
+}
+
+// Basic tests
+describe('An unstyled div', function () {
+  before(function () {
+    this.input = 'abc';
+  });
+  fixtureNode();
 
   describe('processed by line-height', function () {
-    before(function () {
-      this.lineHeight = lineHeight(this.node);
-    });
+    processNode();
 
-    it('has a line-height which is a number', function () {
-      assertEqual(typeof this.lineHeight, 'number');
-      assertNotEqual(isNaN(this.lineHeight), true);
-    });
-
-    it('has a height of 50px', function () {
+    it('has a line-height equal to its height', function () {
       var height = this.node.offsetHeight;
-      assertEqual(typeof height, 'number');
-      assertEqual(height, 50);
+      assert.strictEqual(this.lineHeight, height);
     });
+  });
+});
 
-    it('has the styled line-height', function () {
-      assertEqual(this.lineHeight, 50);
+describe('A styled div', function () {
+  before(function () {
+    this.input = 'abc';
+  });
+  fixtureNode();
+  before(function () {
+    this.node.style.cssText = 'line-height: 50px;';
+  });
+
+  describe('processed by line-height', function () {
+    processNode();
+
+    it('has the styled line-height\'s height', function () {
+      assert.strictEqual(this.lineHeight, 50);
     });
   });
 });
