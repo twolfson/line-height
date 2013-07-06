@@ -1,7 +1,18 @@
 // Load in test dependencies
 var lineHeight = require('../lib/line-height.js'),
-    assert = require('assert'),
     computedStyle = require('computed-style');
+
+// Create assertion methods (at the time of writing Chai does not work in <=IE8)
+function assertEqual(a, b) {
+  if (a !== b) {
+    throw new Error('Assertion error: ' + a + ' !== ' + b);
+  }
+}
+function assertNotEqual(a, b) {
+  if (a == b) {
+    throw new Error('Assertion error: ' + a + ' == ' + b);
+  }
+}
 
 // Basic tests
 describe('An unstyled div', function () {
@@ -22,14 +33,14 @@ describe('An unstyled div', function () {
     });
 
     it('has a line-height which is a number', function () {
-      assert.strictEqual(typeof this.lineHeight, 'number');
-      assert.notEqual(isNaN(this.lineHeight), true);
+      assertEqual(typeof this.lineHeight, 'number');
+      assertNotEqual(isNaN(this.lineHeight), true);
     });
 
     it('has a line-height equal to its height', function () {
       var heightStr = computedStyle(this.node, 'height'),
           height = parseInt(heightStr, 10);
-      assert.strictEqual(height, this.lineHeight);
+      assertEqual(this.lineHeight, height);
     });
   });
 });
