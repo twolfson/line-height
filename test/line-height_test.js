@@ -22,7 +22,7 @@ describe('An unstyled div', function () {
     this.node = node;
   });
   after(function () {
-    document.body.removeChild(this.node);
+    // document.body.removeChild(this.node);
   });
 
   describe('processed by line-height', function () {
