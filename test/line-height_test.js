@@ -83,9 +83,11 @@ describe('An em based line-height div', function () {
   describe('processed by line-height', function () {
     processNode();
 
-    it('has a line-height equal to its height', function () {
-      var height = this.node.offsetHeight;
-      assert.strictEqual(this.lineHeight, height);
+    it('has a line-height very close to its height', function () {
+      var height = this.node.offsetHeight,
+          lnHeight = this.lineHeight,
+          withinBounds = Math.abs(lnHeight - height) <= 1;
+      assert.strictEqual(withinBounds, true, 'Expected: ' + lnHeight + ', Actual: ' + height);
     });
   });
 });
