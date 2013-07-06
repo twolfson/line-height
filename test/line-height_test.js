@@ -1,6 +1,6 @@
-// Load in computedStyle
+// Load in test dependencies
 var lineHeight = require('../lib/line-height.js'),
-    assert = require('assert'),
+    assert = require('chai').assert,
     computedStyle = require('computed-style');
 
 // Basic tests
@@ -33,3 +33,6 @@ describe('An unstyled div', function () {
     });
   });
 });
+
+
+// TODO: Test all other CSS formats (%, em, px, cm, rem)
