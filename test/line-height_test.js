@@ -1,6 +1,6 @@
 // Load in test dependencies
 var lineHeight = require('../lib/line-height.js'),
-    assert = require('chai').assert,
+    assert = require('assert'),
     computedStyle = require('computed-style');
 
 // Basic tests

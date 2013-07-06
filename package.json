@@ -49,16 +49,15 @@
     ],
     "harness": "mocha",
     "browsers": [
-      "ie/6..latest",
-      "chrome/20..latest",
-      "chrome/canary",
-      "firefox/10..latest",
-      "firefox/nightly",
+      "ie/6",
+      "ie/10",
+      "chrome/latest",
+      "firefox/latest",
       "safari/latest",
       "opera/11.0..latest",
-      "opera/next",
       "iphone/6",
-      "ipad/6"
+      "ipad/6",
+      "android-browser/4.2"
     ]
   }
 }
