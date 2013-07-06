@@ -36,6 +36,12 @@ function styleBody(css) {
   });
 }
 
+function globalStyle(selector, rule) {
+  // TODO: Get/create a stylesheet
+  // TODO: Add our rule to the stylesheet
+  // TODO: Afterwards, take down the rule
+}
+
 // Basic tests
 describe('An unstyled div', function () {
   before(function () {
@@ -154,7 +160,6 @@ describe('A globally styled body and an unstyled div', function () {
   });
 });
 
-
 // Kitchen sink tests
 describe('A pt line-height div', function () {
   before(function () {
@@ -177,6 +182,24 @@ describe('An em line-height with a pt font div', function () {
     lineHeight._ratio = null;
     this.html = '<div style="line-height: 2.5em; font-size: 33pt;">abc</div>';
   });
+  fixtureNode();
+
+  describe('processed by line-height', function () {
+    processNode();
+
+    it('has a line-height equal to its height', function () {
+      var height = this.node.offsetHeight;
+      assert.strictEqual(this.lineHeight, height);
+    });
+  });
+});
+
+describe.skip('A div-specific font-size style and an h2', function () {
+  before(function () {
+    lineHeight._ratio = null;
+    this.html = '<h2>abc</h2>';
+  });
+  globalStyle('div', 'font-size: 34px;');
   fixtureNode();
 
   describe('processed by line-height', function () {
