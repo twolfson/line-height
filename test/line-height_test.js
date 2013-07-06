@@ -108,9 +108,9 @@ describe('An numeric line-height div', function () {
   });
 });
 
-describe('An numeric line-height div', function () {
+describe('An inherit line-height div', function () {
   before(function () {
-    this.html = '<div style="line-height: 2.3;">abc</div>';
+    this.html = '<div style="line-height: inherit;">abc</div>';
   });
   fixtureNode();
 
@@ -124,5 +124,4 @@ describe('An numeric line-height div', function () {
   });
 });
 
-// TODO: Deal with em, ex, ch, rem, vh, vw, vmin, vmax, px, mm, cm, in, pt, pc, mozmm
-// TODO: Deal with inherit
+// TODO: Actually use inherit
