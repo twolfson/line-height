@@ -128,5 +128,35 @@ describe('An inherit line-height div', function () {
   });
 });
 
-// TODO: Test pt due ot IE
-// TODO: Test usage of pt in font-size for computation of ratios (IE troubles)
+describe('A pt line-height div', function () {
+  before(function () {
+    this.html = '<div style="line-height: 27pt;">abc</div>';
+  });
+  fixtureNode();
+
+  describe('processed by line-height', function () {
+    processNode();
+
+    it('has a line-height equal to its height', function () {
+      var height = this.node.offsetHeight;
+      assert.strictEqual(this.lineHeight, height);
+    });
+  });
+});
+
+describe('An em line-height with a pt font div', function () {
+  before(function () {
+    lineHeight._ratio = null;
+    this.html = '<div style="line-height: 2.5em; font-size: 33pt;">abc</div>';
+  });
+  fixtureNode();
+
+  describe('processed by line-height', function () {
+    processNode();
+
+    it('has a line-height equal to its height', function () {
+      var height = this.node.offsetHeight;
+      assert.strictEqual(this.lineHeight, height);
+    });
+  });
+});
