@@ -92,7 +92,7 @@ describe('An em based line-height div', function () {
   });
 });
 
-describe('An numeric line-height div', function () {
+describe('A numeric line-height div', function () {
   before(function () {
     this.html = '<div style="line-height: 2.3;">abc</div>';
   });
@@ -125,3 +125,5 @@ describe('An inherit line-height div', function () {
 });
 
 // TODO: Actually use inherit
+// TODO: Test pt due ot IE
+// TODO: Test usage of pt in font-size for computation of ratios (IE troubles)
