@@ -1,6 +1,6 @@
 // Load in test dependencies
 var lineHeight = require('../lib/line-height.js'),
-    assert = require('assert'),
+    assert = require('proclaim'),
     domify = require('domify'),
     cssControls = require('css-controls');
 
@@ -38,11 +38,12 @@ function styleBody(css) {
 
 var styleSheet = cssControls.createStyleSheet();
 function globalStyle(selector, rule) {
+  var index;
   before(function () {
-    cssControls.addRule(styleSheet, selector, rule);
+    index = cssControls.addRule(styleSheet, selector, rule);
   });
   after(function () {
-    cssControls.removeRule(styleSheet, selector, rule);
+    cssControls.removeRule(styleSheet, index);
   });
 }
 

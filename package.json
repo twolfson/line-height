@@ -39,7 +39,8 @@
     "chai": "~1.7.2",
     "domify": "~1.0.0",
     "css-controls": "~0.1.0",
-    "testem": "~0.3.12"
+    "testem": "~0.3.12",
+    "proclaim": "~1.5.0"
   },
   "keywords": [
     "line-height",
