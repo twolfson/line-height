@@ -1,0 +1,11 @@
+{
+  "framework": "mocha",
+  "before_tests": "npm run build-test",
+  "src_files": [
+    "lib/line-height.js",
+    "test/line-height_test.js"
+  ],
+  "serve_files": [
+    "test/line-height_test.browserify.js"
+  ]
+}

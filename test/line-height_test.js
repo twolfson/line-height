@@ -1,18 +1,17 @@
 // Load in test dependencies
 var lineHeight = require('../lib/line-height.js'),
-    domify = require('domify');
-    assert = require('./utils/assert'),
-    body = document.body;
+    domify = require('domify'),
+    assert = require('assert');
 
 // Create common fixture actions
 function fixtureNode() {
   before(function () {
     var node = domify(this.html);
-    body.appendChild(node);
+    document.body.appendChild(node);
     this.node = node;
   });
   after(function () {
-    body.removeChild(this.node);
+    document.body.removeChild(this.node);
   });
 }
 
@@ -29,10 +28,10 @@ function processNode() {
 
 function styleBody(css) {
   before(function () {
-    body.style.cssText = css;
+    document.body.style.cssText = css;
   });
   after(function () {
-    body.style.cssText = '';
+    document.body.style.cssText = '';
   });
 }
 
