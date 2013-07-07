@@ -5,7 +5,5 @@
     "lib/line-height.js",
     "test/line-height_test.js"
   ],
-  "serve_files": [
-    "test/line-height_test.browserify.js"
-  ]
+  "test_page": "test/line-height_test.html"
 }
