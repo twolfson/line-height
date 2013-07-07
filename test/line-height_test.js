@@ -1,7 +1,8 @@
 // Load in test dependencies
 var lineHeight = require('../lib/line-height.js'),
+    assert = require('assert'),
     domify = require('domify'),
-    assert = require('assert');
+    cssControls = require('css-controls');
 
 // Create common fixture actions
 function fixtureNode() {
@@ -35,10 +36,14 @@ function styleBody(css) {
   });
 }
 
+var styleSheet = cssControls.createStyleSheet();
 function globalStyle(selector, rule) {
-  // TODO: Get/create a stylesheet
-  // TODO: Add our rule to the stylesheet
-  // TODO: Afterwards, take down the rule
+  before(function () {
+    cssControls.addRule(styleSheet, selector, rule);
+  });
+  after(function () {
+    cssControls.removeRule(styleSheet, selector, rule);
+  });
 }
 
 // Basic tests
@@ -193,7 +198,7 @@ describe('An em line-height with a pt font div', function () {
   });
 });
 
-describe.skip('A div-specific font-size style and an h2', function () {
+describe('A div-specific font-size style and an h2', function () {
   before(function () {
     lineHeight._ratio = null;
     this.html = '<h2>abc</h2>';
