@@ -114,7 +114,7 @@ describe('An em based line-height div', function () {
   });
 });
 
-describe.skip('A numeric line-height div', function () {
+describe('A numeric line-height div', function () {
   before(function () {
     this.html = '<div style="line-height: 2.3;">abc</div>';
   });
