@@ -149,7 +149,7 @@ describe('An inherit line-height div', function () {
 // Advanced tests
 describe('A globally styled body and an unstyled div', function () {
   before(function () {
-    lineHeight._ratio = null;
+    lineHeight.clearCache();
     this.html = '<div>abc</div>';
   });
   styleBody('font-size: 40px;');
@@ -184,7 +184,7 @@ describe('A pt line-height div', function () {
 
 describe('An em line-height with a pt font div', function () {
   before(function () {
-    lineHeight._ratio = null;
+    lineHeight.clearCache();
     this.html = '<div style="line-height: 2.5em; font-size: 33pt;">abc</div>';
   });
   fixtureNode();
@@ -201,7 +201,7 @@ describe('An em line-height with a pt font div', function () {
 
 describe('A div-specific font-size style and an h2', function () {
   before(function () {
-    lineHeight._ratio = null;
+    lineHeight.clearCache();
     this.html = '<h2>abc</h2>';
   });
   globalStyle('div', 'font-size: 34px;');
