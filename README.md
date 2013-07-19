@@ -26,7 +26,7 @@ In a large amount of browsers, the [computed style][computed-style] for an eleme
 
 If it is specified by any other means (e.g. ancestor has a `line-height` or the element has a `line-height` specified), it is either a [CSS length][css-length].
 
-To solve this problem, we create a vanilla element of the same `tagName` (e.g. `h2` if it is an `h2`), and record the ratio of `offsetHeight` (height of the element) to computed `font-size`. Then, we take the `font-size` of the original element and multiply it by this ratio. The result is the height of 1 line of the element (i.e. `line-height`).
+To solve this problem, we create a vanilla element of the same `nodeName` (e.g. `h2` if it is an `h2`), and record the ratio of `offsetHeight` (height of the element) to computed `font-size`. Then, we take the `font-size` of the original element and multiply it by this ratio. The result is the height of 1 line of the element (i.e. `line-height`).
 
 We choose a ratio over saying the `line-height` will always be `x` because a `font-size` could be adjusted but the browser will say `line-height: normal`. Fortunately, there is a constant ratio between `font-size` and `line-height` in all browsers.
 
