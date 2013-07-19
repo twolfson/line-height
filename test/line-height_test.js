@@ -16,22 +16,11 @@ function fixtureNode() {
   });
 }
 
-function processNode(options) {
-  // Fallback options
-  options = options || {};
-
-  // Add a before hook to calculate the line height
+function processNode() {
   before(function () {
-    // If we shouldn't preserve the cache, nuke it (default action)
-    if (!options.preserveCache) {
-      lineHeight.clearCache();
-    }
-
-    // Calculate the line height
     this.lineHeight = lineHeight(this.node);
   });
 
-  // Add an assertion to verify the line height was a number and not NaN
   it('has a line-height which is a number', function () {
     assert.strictEqual(typeof this.lineHeight, 'number');
     assert.notEqual(isNaN(this.lineHeight), true);
@@ -177,7 +166,6 @@ describe('An inherit line-height div', function () {
 // Advanced tests
 describe('A globally styled body and an unstyled div', function () {
   before(function () {
-    lineHeight.clearCache();
     this.html = '<div>abc</div>';
   });
   styleBody('font-size: 40px;');
@@ -212,7 +200,6 @@ describe('A pt line-height div', function () {
 
 describe('An em line-height with a pt font div', function () {
   before(function () {
-    lineHeight.clearCache();
     this.html = '<div style="line-height: 2.5em; font-size: 33pt;">abc</div>';
   });
   fixtureNode();
@@ -229,7 +216,6 @@ describe('An em line-height with a pt font div', function () {
 
 describe('A div-specific font-size style and an h2', function () {
   before(function () {
-    lineHeight.clearCache();
     this.html = '<h2>abc</h2>';
   });
   globalStyle('div', 'font-size: 34px;');
@@ -244,5 +230,3 @@ describe('A div-specific font-size style and an h2', function () {
     });
   });
 });
-
-
