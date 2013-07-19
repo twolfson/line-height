@@ -16,12 +16,22 @@ function fixtureNode() {
   });
 }
 
-function processNode() {
+function processNode(options) {
+  // Fallback options
+  options = options || {};
+
+  // Add a before hook to calculate the line height
   before(function () {
-    lineHeight.clearCache();
+    // If we shouldn't preserve the cache, nuke it (default action)
+    if (!options.preserveCache) {
+      lineHeight.clearCache();
+    }
+
+    // Calculate the line height
     this.lineHeight = lineHeight(this.node);
   });
 
+  // Add an assertion to verify the line height was a number and not NaN
   it('has a line-height which is a number', function () {
     assert.strictEqual(typeof this.lineHeight, 'number');
     assert.notEqual(isNaN(this.lineHeight), true);
@@ -81,22 +91,6 @@ describe('A line-height styled div', function () {
 });
 
 // DEV: Tests and disproves that an element has a constant ratio for its font-size
-describe('A font-size styled div', function () {
-  before(function () {
-    this.html = '<div style="font-size: 50px;">abc</div>';
-  });
-  fixtureNode();
-
-  describe('processed by line-height', function () {
-    processNode();
-
-    it('has the styled line-height\'s height', function () {
-      var height = this.node.offsetHeight;
-      assert.strictEqual(this.lineHeight, height);
-    });
-  });
-});
-
 describe('A font-size styled div', function () {
   before(function () {
     this.html = '<div style="font-size: 50px;">abc</div>';
