@@ -89,7 +89,8 @@ describe('A font-size styled div', function () {
     processNode();
 
     it('has the styled line-height\'s height', function () {
-      assert.strictEqual(this.lineHeight, 50);
+      var height = this.node.offsetHeight;
+      assert.strictEqual(this.lineHeight, height);
     });
   });
 });
