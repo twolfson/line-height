@@ -64,9 +64,24 @@ describe('An unstyled div', function () {
   });
 });
 
-describe('A styled div', function () {
+describe('A line-height styled div', function () {
   before(function () {
     this.html = '<div style="line-height: 50px;">abc</div>';
+  });
+  fixtureNode();
+
+  describe('processed by line-height', function () {
+    processNode();
+
+    it('has the styled line-height\'s height', function () {
+      assert.strictEqual(this.lineHeight, 50);
+    });
+  });
+});
+
+describe('A font-size styled div', function () {
+  before(function () {
+    this.html = '<div style="font-size: 50px;">abc</div>';
   });
   fixtureNode();
 
@@ -216,3 +231,5 @@ describe('A div-specific font-size style and an h2', function () {
     });
   });
 });
+
+
