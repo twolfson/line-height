@@ -32,13 +32,18 @@ We choose a ratio over saying the `line-height` will always be `x` because a `fo
 
 // TODO: Make sure we have a test against this (addresses #1)
 
-[computed-style]:
-[css-length]:
+[computed-style]: https://developer.mozilla.org/en-US/docs/Web/API/window.getComputedStyle
+[css-length]: https://developer.mozilla.org/en-US/docs/Web/CSS/length
 
 ### Converting `pt` to `px`
+In most browsers, when the `line-height` is specified in `pt` or a similar relative length unit, the `computedStyle` value is also in `pt`.
+
+To solve this problem, we use the [ratio of 3pt/4px][css-length] to make a conversion to pixels.
 
 ### `numeric` font-size in IE6
-- In IE6, `numeric` `font-size`s (e.g. `font-size: 2.3`) are returned as the font-size. Fortunately, these are relative just like `em`s.
+In IE6, `numeric` `font-size`s (e.g. `font-size: 2.3`) are returned without a unit.
+
+To solve this problem, we treat this number as an `em` since it is relative as well. To do that, we set the element's style to "numeric value" + "em", compute and save the `font-size`, remove the temporary style. This conversion gives us the unit in `pt` which we know how to deal with from before.
 
 ## Contributing
 In lieu of a formal styleguide, take care to maintain the existing coding style. Add unit tests for any new or changed functionality. Lint via [grunt](https://github.com/gruntjs/grunt) and test via `npm test`.
