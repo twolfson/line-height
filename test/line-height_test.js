@@ -18,6 +18,7 @@ function fixtureNode() {
 
 function processNode() {
   before(function () {
+    lineHeight.clearCache();
     this.lineHeight = lineHeight(this.node);
   });
 
@@ -75,6 +76,23 @@ describe('A line-height styled div', function () {
 
     it('has the styled line-height\'s height', function () {
       assert.strictEqual(this.lineHeight, 50);
+    });
+  });
+});
+
+// DEV: Tests and disproves that an element has a constant ratio for its font-size
+describe('A font-size styled div', function () {
+  before(function () {
+    this.html = '<div style="font-size: 50px;">abc</div>';
+  });
+  fixtureNode();
+
+  describe('processed by line-height', function () {
+    processNode();
+
+    it('has the styled line-height\'s height', function () {
+      var height = this.node.offsetHeight;
+      assert.strictEqual(this.lineHeight, height);
     });
   });
 });
