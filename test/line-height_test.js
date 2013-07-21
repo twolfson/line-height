@@ -254,8 +254,7 @@ describe('A globally styled body and an unstyled div', function () {
 });
 
 // Kitchen sink tests
-// Testing a specific unit type explicitly
-// TODO: Test *every* unit type
+// Testing a pt unit type explicitly
 describe('A pt line-height div', function () {
   before(function () {
     this.html = '<div style="line-height: 27pt;">abc</div>';
@@ -276,6 +275,31 @@ describe('A pt line-height div', function () {
     });
   });
 });
+
+// Mass test all other unit types
+var cssLengths = ['em', 'ex', 'ch', 'rem', 'vh', 'vw', 'vmin', 'vmax', 'px', 'mm', 'cm', 'in', 'pt', 'pc', 'mozmm'],
+    i = cssLengths.length;
+function testCssLength(cssLength) {
+  describe('A ' + cssLength + ' line-height div', function () {
+    before(function () {
+      this.html = '<div style="line-height: 200' + cssLength + ';">abc</div>';
+    });
+    fixtureNode();
+
+    describe('processed by line-height', function () {
+      processNode();
+
+      it('has a line-height equal to its height', function () {
+        var height = this.node.offsetHeight;
+        assert.strictEqual(this.lineHeight, height);
+      });
+    });
+  });
+}
+while (i--) {
+  testCssLength(cssLengths[i]);
+}
+
 
 // Verify there is no bleeding between
 describe('An em line-height with a pt font div', function () {
