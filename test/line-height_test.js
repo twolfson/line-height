@@ -165,6 +165,24 @@ describe('An inherit line-height div', function () {
   });
 });
 
+describe('A child in a styled div', function () {
+  before(function () {
+    this.html = '<div style="line-height: 50px;"><div id="child">abc</div></div>';
+  });
+  fixtureNode();
+
+  describe('processed by line-height', function () {
+    before(function () {
+      var childNode = document.getElementById('child');
+      this.lineHeight = lineHeight(childNode);
+    });
+
+    it('has a line-height equal to the parent\'s line-height', function () {
+      assert.strictEqual(this.lineHeight, 50);
+    });
+  });
+});
+
 // Advanced tests
 describe('A globally styled body and an unstyled div', function () {
   before(function () {

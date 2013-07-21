@@ -22,8 +22,6 @@ _(Coming soon)_
 ### `line-height: normal`
 In a large amount of browsers, the [computed style][computed-style] for an element's `line-height` is `normal` by default.
 
-// TODO: Make sure we have a test against parent sizing
-
 If it is specified by any other means (e.g. ancestor has a `line-height` or the element has a `line-height` specified), it is either a [CSS length][css-length].
 
 To solve this problem, we create a vanilla element of the same `nodeName` (e.g. `h2` if it is an `h2`), apply the original element's `font-size`, and return the element `offsetHeight`. This is the `height` of `1 line` of the element (i.e. `line-height`).
