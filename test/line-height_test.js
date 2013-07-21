@@ -277,7 +277,7 @@ describe('A pt line-height div', function () {
 });
 
 // Testing a mm unit type explicitly
-describe('A pt line-height div', function () {
+describe.only('A mm line-height div', function () {
   before(function () {
     this.html = '<div style="line-height: 50.8mm;">abc</div>';
   });
