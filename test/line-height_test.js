@@ -134,7 +134,7 @@ describe('A percentage line-height div', function () {
 
 describe('A relative line-height div', function () {
   before(function () {
-    this.html = '<div style="line-height: 1.3em;">abc</div>';
+    this.html = '<div style="line-height: 3em;">abc</div>';
   });
   fixtureNode();
 
