@@ -124,11 +124,15 @@ describe('An em based line-height div', function () {
   describe('processed by line-height', function () {
     processNode();
 
-    it('has a line-height very close to its height', function () {
-      var height = this.node.offsetHeight,
-          lnHeight = this.lineHeight,
-          withinBounds = Math.abs(lnHeight - height) <= 1;
-      assert.strictEqual(withinBounds, true, 'Expected: ' + lnHeight + ', Actual: ' + height);
+    // it('has a line-height very close to its height', function () {
+    //   var height = this.node.offsetHeight,
+    //       lnHeight = this.lineHeight,
+    //       withinBounds = Math.abs(lnHeight - height) <= 1;
+    //   assert.strictEqual(withinBounds, true, 'Expected: ' + lnHeight + ', Actual: ' + height);
+    // });
+    it('has a line-height equal to its height', function () {
+      var height = this.node.offsetHeight;
+      assert.strictEqual(this.lineHeight, height);
     });
   });
 });
@@ -149,6 +153,7 @@ describe('A numeric line-height div', function () {
   });
 });
 
+// Verify ancestor -> descendant works on global styling to node level
 describe('An inherit line-height div', function () {
   before(function () {
     this.html = '<div style="line-height: inherit;">abc</div>';
@@ -165,6 +170,7 @@ describe('An inherit line-height div', function () {
   });
 });
 
+// Verify ancestor -> descendant works on node to node level
 describe('A child in a styled div', function () {
   before(function () {
     this.html = '<div style="line-height: 50px;"><div id="child">abc</div></div>';
