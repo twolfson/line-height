@@ -50,6 +50,7 @@ function globalStyle(selector, rule) {
 }
 
 // Basic tests
+var _defaultLnHeight;
 describe('An unstyled div', function () {
   before(function () {
     this.html = '<div>abc</div>';
@@ -58,6 +59,11 @@ describe('An unstyled div', function () {
 
   describe('processed by line-height', function () {
     processNode();
+
+    before(function () {
+      // Save the line height for other tests
+      _defaultLnHeight = this.lineHeight;
+    });
 
     it('has a line-height equal to its height', function () {
       var height = this.node.offsetHeight;
@@ -95,6 +101,11 @@ describe('A font-size styled div', function () {
       var height = this.node.offsetHeight;
       assert.strictEqual(this.lineHeight, height);
     });
+
+    it('has a line-height greater than the its font-size', function () {
+      var lnHeight = this.lineHeight;
+      assert.ok(lnHeight > 50, 'Expected: > 50, Actual: ' + lnHeight);
+    });
   });
 });
 
@@ -111,6 +122,11 @@ describe('A percentage line-height div', function () {
     it('has a line-height equal to its height', function () {
       var height = this.node.offsetHeight;
       assert.strictEqual(this.lineHeight, height);
+    });
+
+    it('has a line-height greater than the default', function () {
+      var lnHeight = this.lineHeight;
+      assert.ok(lnHeight > _defaultLnHeight, 'Expected: > ' + _defaultLnHeight + ' (default), Actual: ' + lnHeight);
     });
   });
 });
@@ -190,6 +206,7 @@ describe('A child in a styled div', function () {
 });
 
 // Advanced tests
+// Verify more global styling inheritance
 describe('A globally styled body and an unstyled div', function () {
   before(function () {
     this.html = '<div>abc</div>';
@@ -204,10 +221,17 @@ describe('A globally styled body and an unstyled div', function () {
       var height = this.node.offsetHeight;
       assert.strictEqual(this.lineHeight, height);
     });
+
+    it('has a line-height greater than the body\'s font-size', function () {
+      var lnHeight = this.lineHeight;
+      assert.ok(lnHeight > 40, 'Expected: > 40, Actual: ' + lnHeight);
+    });
   });
 });
 
 // Kitchen sink tests
+// Testing a specific unit type explicitly
+// TODO: Test *every* unit type
 describe('A pt line-height div', function () {
   before(function () {
     this.html = '<div style="line-height: 27pt;">abc</div>';
@@ -224,6 +248,7 @@ describe('A pt line-height div', function () {
   });
 });
 
+// Verify there is no bleeding between
 describe('An em line-height with a pt font div', function () {
   before(function () {
     this.html = '<div style="line-height: 2.5em; font-size: 33pt;">abc</div>';
@@ -240,11 +265,12 @@ describe('An em line-height with a pt font div', function () {
   });
 });
 
+// Verify we return a line-height specific for a the tag type (e.g. h2 over div)
 describe('A div-specific font-size style and an h2', function () {
   before(function () {
     this.html = '<h2>abc</h2>';
   });
-  globalStyle('div', 'font-size: 34px;');
+  globalStyle('div', 'font-size: 60px;');
   fixtureNode();
 
   describe('processed by line-height', function () {
@@ -253,6 +279,7 @@ describe('A div-specific font-size style and an h2', function () {
     it('has a line-height equal to its height', function () {
       var height = this.node.offsetHeight;
       assert.strictEqual(this.lineHeight, height);
+      assert.notEqual(this.lineHeight, 60);
     });
   });
 });
