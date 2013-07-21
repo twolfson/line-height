@@ -299,7 +299,7 @@ describe('A mm line-height div', function () {
 });
 
 // Testing a cm unit type explicitly (IE6)
-describe.only('A cm line-height div', function () {
+describe('A cm line-height div', function () {
   before(function () {
     this.html = '<div style="line-height: 2.54cm;">abc</div>';
   });
@@ -320,9 +320,31 @@ describe.only('A cm line-height div', function () {
   });
 });
 
+// Testing a in unit type explicitly (IE6)
+describe.only('A in line-height div', function () {
+  before(function () {
+    this.html = '<div style="line-height: 2in;">abc</div>';
+  });
+  fixtureNode();
+
+  describe('processed by line-height', function () {
+    processNode();
+
+    it('has a line-height equal to its height', function () {
+      var height = this.node.offsetHeight;
+      assert.strictEqual(this.lineHeight, height);
+    });
+
+    // DEV: This verifies our conversion is correct
+    it('has a line-height of 192px', function () {
+      assert.strictEqual(this.lineHeight, 192); // 2 * 96
+    });
+  });
+});
+
 // Mass test all other unit types
 // DEV: Units taken from https://developer.mozilla.org/en-US/docs/Web/CSS/length
-var cssLengths = ['em', 'ex', 'ch', 'rem', 'vh', 'vw', 'vmin', 'vmax', 'px', 'mm', /*'cm',*/ /*'in',*/ 'pt', /*'pc',*/ 'mozmm'],
+var cssLengths = ['em', 'ex', 'ch', 'rem', 'vh', 'vw', 'vmin', 'vmax', 'px', 'mm', 'cm', /*'in',*/ 'pt', /*'pc',*/ 'mozmm'],
     i = cssLengths.length;
 function testCssLength(cssLength) {
   describe('A ' + cssLength + ' line-height div', function () {
