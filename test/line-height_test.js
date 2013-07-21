@@ -342,9 +342,31 @@ describe.only('A in line-height div', function () {
   });
 });
 
+// Testing a pc unit type explicitly (IE6)
+describe.only('A pc line-height div', function () {
+  before(function () {
+    this.html = '<div style="line-height: 2pc;">abc</div>';
+  });
+  fixtureNode();
+
+  describe('processed by line-height', function () {
+    processNode();
+
+    it('has a line-height equal to its height', function () {
+      var height = this.node.offsetHeight;
+      assert.strictEqual(this.lineHeight, height);
+    });
+
+    // DEV: This verifies our conversion is correct
+    it('has a line-height of 32px', function () {
+      assert.strictEqual(this.lineHeight, 32); // 2pc * 12pt/1pc * 4px/3pt
+    });
+  });
+});
+
 // Mass test all other unit types
 // DEV: Units taken from https://developer.mozilla.org/en-US/docs/Web/CSS/length
-var cssLengths = ['em', 'ex', 'ch', 'rem', 'vh', 'vw', 'vmin', 'vmax', 'px', 'mm', 'cm', /*'in',*/ 'pt', /*'pc',*/ 'mozmm'],
+var cssLengths = ['em', 'ex', 'ch', 'rem', 'vh', 'vw', 'vmin', 'vmax', 'px', 'mm', 'cm', 'in', 'pt', /*'pc',*/ 'mozmm'],
     i = cssLengths.length;
 function testCssLength(cssLength) {
   describe('A ' + cssLength + ' line-height div', function () {
