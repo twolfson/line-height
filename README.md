@@ -2,14 +2,59 @@
 
 Calculate line-height of an HTML element (IE6 compatible)
 
+This was created for provide a well-tested module for calculating [line-height][] in pixels for [trunkata][], a line-based truncation library for HTML.
+
+[line-height]: https://developer.mozilla.org/en-US/docs/Web/CSS/line-height
+[trunkata]: https://github.com/twolfson/trunkata
+
 [![browser support](https://ci.testling.com/twolfson/line-height.png)](https://ci.testling.com/twolfson/line-height)
 
 ## Getting Started
-Install the module with: `npm install line-height`
+`line-height` is available via the following:
+
+- [npm][npm], `npm install line-height`
+- [bower][bower], `bower install line-height`
+- [component][component], `component install line-height`
+- [Download via HTTP][download]
+
+[npm]: http://npmjs.org/
+[bower]: http://bower.io/
+[component]: http://component.io/
+[download]: https://raw.github.com/twolfson/line-height/master/dist/line-height.js
+
+For `npm` and `component`, you can load it in as follows:
+```javascript
+var lineHeight = require('line-height');
+```
+
+For `bower` and `http`, you can use vanilla JS
+```html
+<script src="components/line-height.js"></script>
+window.lineHeight; // `line-height` is defined on `window` in camelCase
+```
+
+or you can use [AMD][amd]
+
+[amd]: http://wiki.commonjs.org/wiki/Modules/AsynchronousDefinition
+
+```js
+require(['line-height'], funtion (lineHeight) { /* code */ });
+```
+
+or [CommonJS][commonjs] syntax (see `npm`/`component` section).
+
+[commonjs]: http://wiki.commonjs.org/wiki/Modules/1.0
+
+Once you have the module loaded, you can get the `line-height` of any node in the DOM.
 
 ```javascript
-var line_height = require('line-height');
-line_height.awesome(); // "awesome"
+// Calculate the `line-height` of the body
+lineHeight(document.body); // 19
+
+// Calculate the `line-height` of an h2
+var h2 = document.createElement('h2');
+document.body.appendChild(h2);
+lineHeight(h2); // 29
 ```
 
 ## Documentation
