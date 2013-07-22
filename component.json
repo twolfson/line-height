@@ -1,20 +1,19 @@
 {
-  "name": "css-controls",
-  "repo": "twolfson/css-controls",
+  "name": "line-height",
+  "repo": "twolfson/line-height",
   "version": "0.1.0",
-  "description": "Cross-browser stylesheet creation and css rule creation/deletion (includes IE6 support)",
+  "description": "Calculate line-height of an HTML element (IE6 compatible)",
   "dependencies": {},
   "development": {},
   "license": "MIT",
-  "main": "lib/css-controls.js",
+  "main": "lib/line-height.js",
   "keywords": [
-    "cross-browser",
-    "stylesheet",
-    "css",
-    "rule",
-    "browser"
+    "line-height",
+    "lineHeight",
+    "getComputedStyle",
+    "css"
   ],
   "scripts": [
-    "lib/css-controls.js"
+    "lib/line-height.js"
   ]
 }

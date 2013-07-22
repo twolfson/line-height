@@ -1,6 +1,6 @@
 {
-  "name": "css-controls",
-  "main": "dist/css-controls.js",
+  "name": "line-height",
+  "main": "dist/line-height.js",
   "version": "0.1.0",
   "ignore": [
     "**/.*",
