@@ -55,13 +55,24 @@ lineHeight(document.body); // 19
 var h2 = document.createElement('h2');
 document.body.appendChild(h2);
 lineHeight(h2); // 29
+
+// Calculate how many lines tall an element is
+var div = document.createElement('div');
+div.innerHTML = '<p>1</p><p>2</p>';
+(lineHeight(div) / div.offsetHeight); // 2, how trunkata performs its calculations
 ```
 
 ## Documentation
-_(Coming soon)_
+`line-height` provides a single function.
 
-## Examples
-_(Coming soon)_
+```js
+lineHeight(node);
+/**
+ * Calculate the `line-height` of a given node
+ * @param {HTMLElement} node Element to calculate line height of. Must be in the DOM.
+ * @returns {Number} `line-height` of the element in pixels
+ */
+```
 
 ## Solved problems
 ### `line-height: normal`
