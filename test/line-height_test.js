@@ -4,8 +4,6 @@ var lineHeight = require('../lib/line-height.js'),
     domify = require('domify'),
     cssControls = require('css-controls');
 
-// TODO: Review all tests and make sure they have clear intent. If not, comment.
-
 // Create common fixture actions
 function fixtureNode() {
   before(function () {
