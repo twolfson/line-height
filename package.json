@@ -27,6 +27,7 @@
   },
   "scripts": {
     "build-test": "browserify --transform brfs test/line-height_test.js --outfile test/line-height_test.browserify.js",
+    "build": "browserify lib/line-height.js --standalone line-height --outfile dist/line-height.js",
     "test": "testem ci"
   },
   "dependencies": {},

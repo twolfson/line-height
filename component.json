@@ -1,0 +1,20 @@
+{
+  "name": "css-controls",
+  "repo": "twolfson/css-controls",
+  "version": "0.1.0",
+  "description": "Cross-browser stylesheet creation and css rule creation/deletion (includes IE6 support)",
+  "dependencies": {},
+  "development": {},
+  "license": "MIT",
+  "main": "lib/css-controls.js",
+  "keywords": [
+    "cross-browser",
+    "stylesheet",
+    "css",
+    "rule",
+    "browser"
+  ],
+  "scripts": [
+    "lib/css-controls.js"
+  ]
+}
