@@ -29,10 +29,16 @@ To solve this problem, we create a vanilla element of the same `nodeName` (e.g. 
 [computed-style]: https://developer.mozilla.org/en-US/docs/Web/API/window.getComputedStyle
 [css-length]: https://developer.mozilla.org/en-US/docs/Web/CSS/length
 
-### Converting `pt` to `px`
-In most browsers, when the `line-height` is specified in `pt` or a similar relative length unit, the `computedStyle` value is also in `pt`.
+### Converting `pt`, `pc`, `in`, `cm`, `mm` to `px`
+In most browsers, when the `line-height` is specified in `pt`, `pc`, `in`, `cm` or `mm`, the `computedStyle` value is in the same unit.
 
-To solve this problem, we use the [ratio of 3pt/4px][css-length] to make a conversion to pixels.
+To solve this problem, we use the [standard ratios of conversion to pixels][css-length] to make a conversion to pixels.
+
+- 3pt to 4px
+- 1pc to 16px
+- 1in to 96px
+- 2.54cm to 96px
+- 25.4mm to 96px
 
 ### `numeric` font-size in IE6
 In IE6, `numeric` `font-size`s (e.g. `font-size: 2.3`) are returned without a unit.
