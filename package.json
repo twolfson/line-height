@@ -30,13 +30,14 @@
     "build": "browserify lib/line-height.js --standalone line-height --outfile dist/line-height.js",
     "test": "testem ci"
   },
-  "dependencies": {},
+  "dependencies": {
+    "computed-style": "~0.1.3"
+  },
   "devDependencies": {
     "grunt": "~0.3.17",
     "mocha": "~1.11.0",
     "browserify": "~2.23.1",
     "brfs": "0.0.6",
-    "computed-style": "~0.1.3",
     "chai": "~1.7.2",
     "domify": "~1.0.0",
     "css-controls": "~0.1.0",
