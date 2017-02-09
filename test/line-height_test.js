@@ -8,11 +8,10 @@ var cssControls = require('css-controls');
 var styleSheet = cssControls.createStyleSheet();
 var testUtils = {
   getLineHeight: function (html) {
-    var node;
     before(function () {
       // Save our line height
-      this.node = domify(this.html);
-      document.body.appendChild(node);
+      this.node = domify(html);
+      document.body.appendChild(this.node);
       this.lineHeight = lineHeight(this.node);
 
       // Sanity check line height is a number
