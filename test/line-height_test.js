@@ -294,6 +294,6 @@ describe('A div-specific font-size style and an h2 processed by line-height', fu
 
   it('has a line-height under the div font-size', function () {
     var lnHeight = this.lineHeight;
-    assert.lessThan(lnHeight, 60);
+    assert.lessThan(lnHeight, 50);
   });
 });
