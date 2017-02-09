@@ -297,3 +297,15 @@ describe('A div-specific font-size style and an h2 processed by line-height', fu
     assert.lessThan(lnHeight, 50);
   });
 });
+
+// Verify we properly handle textareas
+// https://github.com/twolfson/line-height/issues/4
+describe('A textarea processed by line-height', function () {
+  testUtils.getLineHeight('<div><div id="div">abc</div><textarea id="textarea">def</textarea></div>');
+
+  it('has a line-height equal to a div\'s line-height', function () {
+    var divNode = document.getElementById('div');
+    var textareaNode = document.getElementById('textarea');
+    assert.strictEqual(lineHeight(divNode), lineHeight(textareaNode));
+  });
+});
