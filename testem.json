@@ -1,9 +1,0 @@
-{
-  "framework": "mocha",
-  "before_tests": "npm run build-test",
-  "src_files": [
-    "lib/line-height.js",
-    "test/line-height_test.js"
-  ],
-  "test_page": "test/line-height_test.html"
-}
