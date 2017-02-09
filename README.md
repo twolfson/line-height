@@ -1,4 +1,4 @@
-# line-height [![Donate on Gittip](http://badgr.co/gittip/twolfson.png)](https://www.gittip.com/twolfson/)
+# line-height [![Build status](https://travis-ci.org/twolfson/line-height.svg?branch=master)](https://travis-ci.org/twolfson/line-height)
 
 Calculate line-height of an HTML element (IE6 compatible)
 
@@ -6,8 +6,6 @@ This was created for provide a well-tested module for calculating [line-height][
 
 [line-height]: https://developer.mozilla.org/en-US/docs/Web/CSS/line-height
 [trunkata]: https://github.com/twolfson/trunkata
-
-[![browser support](https://ci.testling.com/twolfson/line-height.png)](https://ci.testling.com/twolfson/line-height)
 
 ## Getting Started
 `line-height` is available via the following:
@@ -23,7 +21,8 @@ This was created for provide a well-tested module for calculating [line-height][
 [download]: https://raw.github.com/twolfson/line-height/master/dist/line-height.js
 
 For `npm` and `component`, you can load it in as follows:
-```javascript
+
+```js
 var lineHeight = require('line-height');
 ```
 
@@ -47,7 +46,7 @@ or [CommonJS][commonjs] syntax (see `npm`/`component` section).
 
 Once you have the module loaded, you can get the `line-height` of any node in the DOM.
 
-```javascript
+```js
 // Calculate the `line-height` of the body
 lineHeight(document.body); // 19
 
@@ -61,6 +60,12 @@ var div = document.createElement('div');
 div.innerHTML = '<p>1</p><p>2</p>';
 (lineHeight(div) / div.offsetHeight); // 2, how trunkata performs its calculations
 ```
+
+## Donations
+Support this project and [others by twolfson][projects] via [donations][support-me]
+
+[projects]: http://twolfson.com/projects
+[support-me]: http://twolfson.com/support-me
 
 ## Documentation
 `line-height` provides a single function.
