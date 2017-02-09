@@ -1,5 +1,4 @@
-(function(e){if("function"==typeof bootstrap)bootstrap("line-height",e);else if("object"==typeof exports)module.exports=e();else if("function"==typeof define&&define.amd)define(e);else if("undefined"!=typeof ses){if(!ses.ok())return;ses.makeLineHeight=e}else"undefined"!=typeof window?window.lineHeight=e():global.lineHeight=e()})(function(){var define,ses,bootstrap,module,exports;
-return (function(e,t,n){function i(n,s){if(!t[n]){if(!e[n]){var o=typeof require=="function"&&require;if(!s&&o)return o(n,!0);if(r)return r(n,!0);throw new Error("Cannot find module '"+n+"'")}var u=t[n]={exports:{}};e[n][0].call(u.exports,function(t){var r=e[n][1][t];return i(r?r:t)},u,u.exports)}return t[n].exports}var r=typeof require=="function"&&require;for(var s=0;s<n.length;s++)i(n[s]);return i})({1:[function(require,module,exports){
+(function(f){if(typeof exports==="object"&&typeof module!=="undefined"){module.exports=f()}else if(typeof define==="function"&&define.amd){define([],f)}else{var g;if(typeof window!=="undefined"){g=window}else if(typeof global!=="undefined"){g=global}else if(typeof self!=="undefined"){g=self}else{g=this}g.lineHeight = f()}})(function(){var define,module,exports;return (function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);var f=new Error("Cannot find module '"+o+"'");throw f.code="MODULE_NOT_FOUND",f}var l=n[o]={exports:{}};t[o][0].call(l.exports,function(e){var n=t[o][1][e];return s(n?n:e)},l,l.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(require,module,exports){
 // Load in dependencies
 var computedStyle = require('computed-style');
 
@@ -107,12 +106,12 @@ var computedStyle = function (el, prop, getComputedStyle) {
     // https://github.com/jquery/jquery/blob/1.9-stable/src/css.js#L191-L194
     // https://github.com/jquery/jquery/blob/1.9-stable/src/core.js#L593-L597
     prop.replace(/-(\w)/gi, function (word, letter) {
-      return letter.toUpperCase()
+      return letter.toUpperCase();
     })
-  ]
-}
+  ];
+};
 
 module.exports = computedStyle;
+
 },{}]},{},[1])(1)
 });
-;
