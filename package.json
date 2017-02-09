@@ -40,6 +40,8 @@
     "foundry-release-component": "~2.0.0",
     "foundry-release-git": "~2.0.2",
     "foundry-release-npm": "~2.0.2",
+    "jscs": "~3.0.7",
+    "jshint": "~2.9.4",
     "karma": "~1.4.1",
     "karma-browserify": "~5.1.1",
     "karma-chrome-launcher": "~2.0.0",
