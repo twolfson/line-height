@@ -23,7 +23,7 @@
   ],
   "main": "lib/line-height",
   "engines": {
-    "node": ">= 0.6.0"
+    "node": ">= 4.0.0"
   },
   "scripts": {
     "build": "browserify lib/line-height.js --standalone line-height --outfile dist/line-height.js",
