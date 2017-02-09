@@ -9,8 +9,8 @@ var computedStyle = require('computed-style');
  */
 function lineHeight(node) {
   // Grab the line-height via style
-  var lnHeightStr = computedStyle(node, 'line-height'),
-      lnHeight = parseFloat(lnHeightStr, 10);
+  var lnHeightStr = computedStyle(node, 'line-height');
+  var lnHeight = parseFloat(lnHeightStr, 10);
 
   // If the lineHeight did not contain a unit (i.e. it was numeric), convert it to ems (e.g. '2.3' === '2.3em')
   if (lnHeightStr === lnHeight + '') {
@@ -36,19 +36,19 @@ function lineHeight(node) {
   if (lnHeightStr.indexOf('pt') !== -1) {
     lnHeight *= 4;
     lnHeight /= 3;
-  } else if (lnHeightStr.indexOf('mm') !== -1) {
   // Otherwise, if the lineHeight is in `mm`, convert it to pixels (96px for 25.4mm)
+  } else if (lnHeightStr.indexOf('mm') !== -1) {
     lnHeight *= 96;
     lnHeight /= 25.4;
-  } else if (lnHeightStr.indexOf('cm') !== -1) {
   // Otherwise, if the lineHeight is in `cm`, convert it to pixels (96px for 2.54cm)
+  } else if (lnHeightStr.indexOf('cm') !== -1) {
     lnHeight *= 96;
     lnHeight /= 2.54;
-  } else if (lnHeightStr.indexOf('in') !== -1) {
   // Otherwise, if the lineHeight is in `in`, convert it to pixels (96px for 1in)
+  } else if (lnHeightStr.indexOf('in') !== -1) {
     lnHeight *= 96;
-  } else if (lnHeightStr.indexOf('pc') !== -1) {
   // Otherwise, if the lineHeight is in `pc`, convert it to pixels (12pt for 1pc)
+  } else if (lnHeightStr.indexOf('pc') !== -1) {
     lnHeight *= 16;
   }
 
@@ -58,8 +58,8 @@ function lineHeight(node) {
   // If the line-height is "normal", calculate by font-size
   if (lnHeightStr === 'normal') {
     // Create a temporary node
-    var nodeName = node.nodeName,
-        _node = document.createElement(nodeName);
+    var nodeName = node.nodeName;
+    var _node = document.createElement(nodeName);
     _node.innerHTML = '&nbsp;';
 
     // Set the font-size of the element
@@ -84,6 +84,7 @@ function lineHeight(node) {
 
 // Export lineHeight
 module.exports = lineHeight;
+
 },{"computed-style":2}],2:[function(require,module,exports){
 // This code has been refactored for 140 bytes
 // You can see the original here: https://github.com/twolfson/computedStyle/blob/04cd1da2e30fa45844f95f5cb1ac898e9b9ef050/lib/computedStyle.js
