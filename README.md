@@ -106,6 +106,22 @@ In IE6, `numeric` `font-size`s (e.g. `font-size: 2.3`) are returned without a un
 
 To solve this problem, we treat this number as an `em` since it is relative as well. To do that, we set the element's style to `"numeric value" + "em"`, compute and save the `font-size`, remove the temporary style. This conversion gives us the unit in `pt` which we know how to deal with from before.
 
+## Development
+### Testing
+Tests can be run once via:
+
+```bash
+npm test
+# Or with Karma directly via
+# npm run test-karma-single
+```
+
+Tests can also be run continuously via:
+
+```bash
+npm run test-karma-single
+```
+
 ## Contributing
 In lieu of a formal styleguide, take care to maintain the existing coding style. Add unit tests for any new or changed functionality. Lint via [grunt](https://github.com/gruntjs/grunt) and test via `npm test`.
 
