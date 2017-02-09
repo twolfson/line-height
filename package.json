@@ -26,7 +26,6 @@
     "node": ">= 0.6.0"
   },
   "scripts": {
-    "build-test": "browserify --transform brfs test/line-height_test.js --outfile test/line-height_test.browserify.js",
     "build": "browserify lib/line-height.js --standalone line-height --outfile dist/line-height.js",
     "test": "testem ci"
   },
@@ -34,8 +33,8 @@
     "computed-style": "~0.1.3"
   },
   "devDependencies": {
-    "brfs": "0.0.6",
-    "browserify": "~2.23.1",
+    "brfs": "~1.4.3",
+    "browserify": "~14.0.0",
     "chai": "~1.7.2",
     "css-controls": "~0.1.0",
     "domify": "~1.0.0",
