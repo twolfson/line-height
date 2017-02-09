@@ -77,7 +77,7 @@ describe('A font-size styled div processed by line-height', function () {
 
   it('has a line-height greater than the its font-size', function () {
     var lnHeight = this.lineHeight;
-    assert.ok(lnHeight > 50, 'Expected: > 50, Actual: ' + lnHeight);
+    assert.greaterThan(lnHeight, 50);
   });
 });
 
@@ -93,7 +93,7 @@ describe('A percentage line-height div processed by line-height', function () {
   it('has a line-height greater than the default', function () {
     // DEV: In IE6, 150% !== default * 1.5; 24 !== 28.5 (19 * 1.5)
     var lnHeight = this.lineHeight;
-    assert.ok(lnHeight > _defaultLnHeight, 'Expected: > ' + _defaultLnHeight + ' (default), Actual: ' + lnHeight);
+    assert.greaterThan(lnHeight, _defaultLnHeight);
   });
 });
 
@@ -108,7 +108,7 @@ describe('A relative line-height div processed by line-height', function () {
   it('has a line-height greater than the default', function () {
     // DEV: In IE6, 1.3em !== default * 1.3; 22 !== 24.7 (19 * 1.3)
     var lnHeight = this.lineHeight;
-    assert.ok(lnHeight > _defaultLnHeight, 'Expected: > ' + _defaultLnHeight + ' (default), Actual: ' + lnHeight);
+    assert.greaterThan(lnHeight, _defaultLnHeight);
   });
 });
 
@@ -132,7 +132,7 @@ describe('A numeric line-height div processed by line-height', function () {
   it('has a line-height greater than the default', function () {
     // DEV: In IE6, 2.3 !== default * 2.3; 37 !== 43.6999... (19 * 2.3)
     var lnHeight = this.lineHeight;
-    assert.ok(lnHeight > _defaultLnHeight, 'Expected: > ' + _defaultLnHeight + ' (default), Actual: ' + lnHeight);
+    assert.greaterThan(lnHeight, _defaultLnHeight);
   });
 });
 
@@ -169,7 +169,7 @@ describe('A globally styled body and an unstyled div processed by line-height', 
 
   it('has a line-height greater than the body\'s font-size', function () {
     var lnHeight = this.lineHeight;
-    assert.ok(lnHeight > 40, 'Expected: > 40, Actual: ' + lnHeight);
+    assert.greaterThan(lnHeight, 40);
   });
 });
 
@@ -278,7 +278,7 @@ describe('An em line-height with a pt font div processed by line-height', functi
 
   it('has a line-height greater than the default', function () {
     var lnHeight = this.lineHeight;
-    assert.ok(lnHeight > _defaultLnHeight, 'Expected: > ' + _defaultLnHeight + ' (default), Actual: ' + lnHeight);
+    assert.greaterThan(lnHeight, _defaultLnHeight);
   });
 });
 
@@ -294,6 +294,6 @@ describe('A div-specific font-size style and an h2 processed by line-height', fu
 
   it('has a line-height under the div font-size', function () {
     var lnHeight = this.lineHeight;
-    assert.ok(lnHeight < 60, 'Expected: < 60, Actual: ' + lnHeight);
+    assert.lessThan(lnHeight, 60);
   });
 });
