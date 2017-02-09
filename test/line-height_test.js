@@ -269,7 +269,7 @@ describe('A pt line-height div', function () {
 
     // DEV: This verifies our conversion is correct
     it('has a line-height of 36px', function () {
-      assert.strictEqual(this.lineHeight, 27 * 4/3);
+      assert.strictEqual(this.lineHeight, 36); // 27 * 4/3
     });
   });
 });
@@ -369,7 +369,7 @@ var cssLengths = ['em', 'ex', 'ch', 'rem', 'vh', 'vw', 'vmin', 'vmax', 'px', 'mm
 function testCssLength(cssLength) {
   describe('A ' + cssLength + ' line-height div', function () {
     before(function () {
-      this.html = '<div style="line-height: 200' + cssLength + ';">abc</div>';
+      this.html = '<div style="line-height: 20' + cssLength + ';">abc</div>';
     });
     fixtureNode();
 
@@ -378,7 +378,8 @@ function testCssLength(cssLength) {
 
       it('has a line-height equal to its height', function () {
         var height = this.node.offsetHeight;
-        assert.strictEqual(this.lineHeight, height);
+        assert.greaterThanOrEqual(this.lineHeight, height - 1);
+        assert.lessThanOrEqual(this.lineHeight, height + 1);
       });
     });
   });
