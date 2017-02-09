@@ -27,7 +27,7 @@
   },
   "scripts": {
     "build": "browserify lib/line-height.js --standalone line-height --outfile dist/line-height.js",
-    "test": "npm run build && npm run test-karma-single && npm run lint",
+    "test": "npm run build && npm run test-karma-single",
     "_test-karma-comment": "`xvfb-maybe` checks for DISPLAY environment variable but we hate non-headless browsers so we always shut it off",
     "test-karma-continuous": "DISPLAY=\"\" xvfb-maybe karma start --no-single-run",
     "test-karma-single": "DISPLAY=\"\" xvfb-maybe karma start"
