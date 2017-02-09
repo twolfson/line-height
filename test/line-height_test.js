@@ -163,7 +163,6 @@ describe('An absolute line-height div', function () {
     processNode();
 
     it('has a line-height equal to 50px', function () {
-      var height = this.node.offsetHeight;
       assert.strictEqual(this.lineHeight, 50);
     });
   });
