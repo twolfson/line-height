@@ -1,8 +1,8 @@
 // Load in test dependencies
-var lineHeight = require('../lib/line-height.js'),
-    assert = require('proclaim'),
-    domify = require('domify'),
-    cssControls = require('css-controls');
+var lineHeight = require('../lib/line-height.js');
+var assert = require('proclaim');
+var domify = require('domify');
+var cssControls = require('css-controls');
 
 // Create common fixture actions
 function fixtureNode() {
@@ -363,8 +363,6 @@ describe('A pc line-height div', function () {
 
 // Mass test all other unit types
 // DEV: Units taken from https://developer.mozilla.org/en-US/docs/Web/CSS/length
-var cssLengths = ['em', 'ex', 'ch', 'rem', 'vh', 'vw', 'vmin', 'vmax', 'px', 'mm', 'cm', 'in', 'pt', 'pc', 'mozmm'],
-    i = cssLengths.length;
 function testCssLength(cssLength) {
   describe('A ' + cssLength + ' line-height div', function () {
     before(function () {
@@ -383,10 +381,10 @@ function testCssLength(cssLength) {
     });
   });
 }
-while (i--) {
+var cssLengths = ['em', 'ex', 'ch', 'rem', 'vh', 'vw', 'vmin', 'vmax', 'px', 'mm', 'cm', 'in', 'pt', 'pc', 'mozmm'];
+for (var i = 0; i < cssLengths; i += 1) {
   testCssLength(cssLengths[i]);
 }
-
 
 // Verify there is no bleeding between
 describe('An em line-height with a pt font div', function () {
